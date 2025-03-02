@@ -34,6 +34,23 @@ void moveBishop(int x, int y, char board[Size][Size]){
     
 }
 
+// Torre.
+void moveRook(int x, int y, char board[Size][Size]){
+
+    for (int i = 0; i < Size; i++)
+    {
+        if(i != x) board[i][y] = "T"; // vertical.
+        if(i != y) board[x][y] = "T"; // Horizontal.
+    }
+    
+}
+
+// Queen combinando o movimento da torre e bispo.
+void moveQueen(int x, int y, char board[Size][Size]){
+    moveBishop(x,y,board);
+    moveRook(x,y,board);
+}
+
 
 
 int main()
