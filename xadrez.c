@@ -25,7 +25,7 @@ void printBoard(char board[Size][Size])
 void moveBishop(int x, int y, char board[Size][Size])
 {
 
-    for (int i = 1; i < Size; i++)
+    for (int i = 0; i < Size; i++)
     {
         if (x + i < Size && y + i < Size)
             board[x + i][y + i] = 'B'; // Diagonal direita-baixo.
