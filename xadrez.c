@@ -4,7 +4,35 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
-int main() {
+// Tamanho do tabuleiro.
+#define SIZE 8
+
+void printBoard(char board[SIZE][SIZE])
+{
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        for (int k = 0; k < SIZE; k++)
+        {
+            printf("%c", board[i][k]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+int main()
+{
+    char board[SIZE][SIZE];
+
+    // Iniciar tabuleiro vazio.
+    for (int i = 0; i < SIZE; i++)
+        for (int l = 0; l < SIZE; l++)
+            board[i][l] = '.';
+
+    // Posição de inicio.
+    int x = 3, y = 3;
+
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
 
@@ -27,6 +55,9 @@ int main() {
 
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
+
+    board[x][y] = 'P';
+    printBoard(board);
 
     return 0;
 }
