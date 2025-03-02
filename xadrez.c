@@ -22,36 +22,57 @@ void printBoard(char board[Size][Size])
 }
 
 // Bispo.
-void moveBishop(int x, int y, char board[Size][Size]){
+void moveBishop(int x, int y, char board[Size][Size])
+{
 
-    for (int i = 0; i < Size; i++)
+    for (int i = 1; i < Size; i++)
     {
-        if (x + i < Size && y + i < Size) board[x + i][y + i] = 'B';  // Diagonal direita-baixo.
-        if (x - i >= 0 && y - i >= 0) board[x - i][y - i] = 'B';  // Diagonal esquerda cima.
-        if (x + i < Size && y - i >= 0) board[x + i][y - i] = 'B';  // Diagonal esquerda baixo.
-        if (x - i >= 0 && y + i < Size) board[x - i][y + i] = 'B';  // Diagonal direita cima.
+        if (x + i < Size && y + i < Size)
+            board[x + i][y + i] = 'B'; // Diagonal direita-baixo.
+        if (x - i >= 0 && y - i >= 0)
+            board[x - i][y - i] = 'B'; // Diagonal esquerda cima.
+        if (x + i < Size && y - i >= 0)
+            board[x + i][y - i] = 'B'; // Diagonal esquerda baixo.
+        if (x - i >= 0 && y + i < Size)
+            board[x - i][y + i] = 'B'; // Diagonal direita cima.
     }
-    
 }
 
 // Torre.
-void moveRook(int x, int y, char board[Size][Size]){
+void moveRook(int x, int y, char board[Size][Size])
+{
 
     for (int i = 0; i < Size; i++)
     {
-        if(i != x) board[i][y] = "T"; // vertical.
-        if(i != y) board[x][y] = "T"; // Horizontal.
+        if (i != x)
+            board[i][y] = 'T'; // vertical.
+        if (i != y)
+            board[x][y] = 'T'; // Horizontal.
     }
-    
 }
 
 // Queen combinando o movimento da torre e bispo.
-void moveQueen(int x, int y, char board[Size][Size]){
-    moveBishop(x,y,board);
-    moveRook(x,y,board);
+void moveQueen(int x, int y, char board[Size][Size])
+{
+    moveBishop(x, y, board);
+    moveRook(x, y, board);
 }
 
+// Cavalo.
+void moveKnight(int x, int y, char board[Size][Size])
+{
+    int dx[] = {-2, -1, 1, 2, 2, 1, -1, -2}; // Movimentos em X.
+    int dy[] = {1, 2, 2, 1, -1, -2, -2, -1}; // Movimentos em Y.
 
+    for (int i = 0; i < 8; i++)
+    {
+        int newX = x + dx[i];
+        int newY = y + dy[i];
+
+        if (newX >= 0 && newX < Size && newY >= 0 && newY < Size)
+            board[newX][newY] = 'C'; // Marca as casas onde o cavalo pode ir.
+    }
+}
 
 int main()
 {
@@ -87,6 +108,12 @@ int main()
 
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
+
+    // Peças!
+    // moveBishop(x, y, board); // Bispo.
+    // moveRook(x, y, board); // Toore.
+    // moveQueen(x, y, board); // Rainha.
+    moveKnight(x, y, board); // Movimentação do Cavalo
 
     board[x][y] = 'P'; // Posição inicial da pessa.
     printBoard(board);
