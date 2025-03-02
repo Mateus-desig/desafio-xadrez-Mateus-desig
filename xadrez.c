@@ -5,14 +5,14 @@
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 // Tamanho do tabuleiro.
-#define SIZE 8
+#define Size 8
 
-void printBoard(char board[SIZE][SIZE])
+void printBoard(char board[Size][Size])
 {
 
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < Size; i++)
     {
-        for (int k = 0; k < SIZE; k++)
+        for (int k = 0; k < Size; k++)
         {
             printf("%c", board[i][k]);
         }
@@ -21,13 +21,28 @@ void printBoard(char board[SIZE][SIZE])
     printf("\n");
 }
 
+// Bispo.
+void moveBishop(int x, int y, char board[Size][Size]){
+
+    for (int i = 0; i < Size; i++)
+    {
+        if (x + i < Size && y + i < Size) board[x + i][y + i] = 'B';  // Diagonal direita-baixo.
+        if (x - i >= 0 && y - i >= 0) board[x - i][y - i] = 'B';  // Diagonal esquerda cima.
+        if (x + i < Size && y - i >= 0) board[x + i][y - i] = 'B';  // Diagonal esquerda baixo.
+        if (x - i >= 0 && y + i < Size) board[x - i][y + i] = 'B';  // Diagonal direita cima.
+    }
+    
+}
+
+
+
 int main()
 {
-    char board[SIZE][SIZE];
+    char board[Size][Size];
 
     // Iniciar tabuleiro vazio.
-    for (int i = 0; i < SIZE; i++)
-        for (int l = 0; l < SIZE; l++)
+    for (int i = 0; i < Size; i++)
+        for (int l = 0; l < Size; l++)
             board[i][l] = '.';
 
     // Posição de inicio.
@@ -56,7 +71,7 @@ int main()
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
 
-    board[x][y] = 'P';
+    board[x][y] = 'P'; // Posição inicial da pessa.
     printBoard(board);
 
     return 0;
