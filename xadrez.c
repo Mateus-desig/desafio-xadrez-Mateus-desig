@@ -113,7 +113,7 @@ int main()
     // moveBishop(x, y, board); // Bispo.
     // moveRook(x, y, board); // Toore.
     // moveQueen(x, y, board); // Rainha.
-    moveKnight(x, y, board); // Movimentação do Cavalo
+    moveKnight(x, y, board); // Cavalo
 
     board[x][y] = 'P'; // Posição inicial da pessa.
     printBoard(board);
